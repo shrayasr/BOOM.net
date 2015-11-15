@@ -2,40 +2,43 @@
 using Jil;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace BOOM.net
 {
     class Program
     {
+        static Root _db;
+
         static void Main(string[] args)
         {
-            var metadata = new MetadataData { Buckets = new List<string> { "foo" } };
-            var fooData = new BucketData
-            {
-                Keys = new List<string> { "k1", "k2" },
-                Values = new Dictionary<string, string>
-                {
-                    { "k1", "v1" },
-                    { "k2", "v2" }
-                }
-            };
+            LoadDb();
+
+            Console.ReadKey();
+        }
+
+        private static Root GetStarterTemplate()
+        {
+            var metadata = new MetadataData { Buckets = new List<string>() };
 
             var root = new Root
             {
                 Metadata = metadata,
-                Data = new Dictionary<string, BucketData>
-                {
-                    { "foo", fooData }
-                }
+                Data = new Dictionary<string, BucketData>()
             };
 
-            var op = JSON.Serialize(root);
+            return root;
+        }
 
-            Console.WriteLine(op);
-            Console.ReadKey();
+        private static void LoadDb()
+        {
+            if (!File.Exists(Settings.DB_LOCATION))
+            {
+                var starterTemplate = GetStarterTemplate();
+                File.WriteAllText(Settings.DB_LOCATION, JSON.Serialize(starterTemplate));
+            }
+
+            _db = JSON.Deserialize<Root>(File.ReadAllText(Settings.DB_LOCATION));
         }
     }
 }
