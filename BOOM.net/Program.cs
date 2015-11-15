@@ -3,6 +3,7 @@ using Jil;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace BOOM.net
 {
@@ -13,8 +14,26 @@ namespace BOOM.net
         static void Main(string[] args)
         {
             LoadDb();
+            ParseAndGo(args);
+        }
 
-            Console.ReadKey();
+        private static void ParseAndGo(IEnumerable<string> argsToProcess)
+        {
+            var args = argsToProcess.Select(arg => arg.ToLower()).ToList();
+
+            if (args.Count == 0)
+            {
+                Console.WriteLine("Printing buckets and their constitutients");
+                return;
+            }
+
+            var cmd = args[0];
+
+            if (cmd == "all")
+                Console.WriteLine("All buckets and their entries");
+
+            else if (cmd == "delete")
+                Console.WriteLine("delete buckets");
         }
 
         private static Root GetStarterTemplate()
