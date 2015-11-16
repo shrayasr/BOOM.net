@@ -1,4 +1,5 @@
-# itko
+# ಇಟ್ಕೋ
+> **itko** is the Kannada word for _Keep_
 
 This is a clone of @holman's [BOOM](https://github.com/holman/BOOM) in .NET written in C#
 
