@@ -23,7 +23,7 @@ namespace BOOM.net
 
             if (args.Count == 0)
             {
-                Console.WriteLine("Printing buckets and their constitutients");
+                PrintBucketsAndCounts();
                 return;
             }
 
@@ -34,6 +34,21 @@ namespace BOOM.net
 
             else if (cmd == "delete")
                 Console.WriteLine("delete buckets");
+        }
+
+        private static void PrintBucketsAndCounts()
+        {
+            if (_db.Metadata.Buckets.Count == 0)
+                Console.WriteLine("No buckets");
+
+            else
+            {
+                _db.Metadata.Buckets.ForEach(bucket =>
+                {
+                    var keyCount = _db.Data[bucket].Keys.Count;
+                    Console.WriteLine("{0} ({1})", bucket, keyCount);
+                });
+            }
         }
 
         private static Root GetStarterTemplate()
