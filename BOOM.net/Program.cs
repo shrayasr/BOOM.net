@@ -57,9 +57,20 @@ namespace BOOM.net
             }
         }
 
-        private static void StoreValueInKey(string list, string key, string val)
+        private static void StoreValueInKey(string bucket, string key, string val)
         {
-            throw new NotImplementedException();
+            if (!_db.Metadata.Buckets.Contains(bucket))
+            {
+                Console.WriteLine("Bucket doesn't exist");
+                return;
+            }
+
+            _db.Data[bucket].Values[key] = val;
+
+            if (!_db.Data[bucket].Keys.Contains(key))
+                _db.Data[bucket].Keys.Add(key);
+
+            WriteDb();
         }
 
         private static void PrintValueForKey(string bucket, string key)
