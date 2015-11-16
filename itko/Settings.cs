@@ -9,7 +9,7 @@ namespace BOOM.net
 {
     static class Settings
     {
-        private static string DB_FILENAME = "_boom.json";
+        private static string DB_FILENAME = "_itko.json";
         public static string DB_LOCATION
         {
             get
