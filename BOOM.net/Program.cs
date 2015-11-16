@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace BOOM.net
 {
@@ -11,6 +12,7 @@ namespace BOOM.net
     {
         static Root _db;
 
+        [STAThread]
         static void Main(string[] args)
         {
             LoadDb();
@@ -58,7 +60,7 @@ namespace BOOM.net
                 else if (args.Count == 2)
                 {
                     var key = args[1];
-                    PrintValueForKey(bucket, key);
+                    PrintValForKeyCopyToClipboard(bucket, key);
                 }
 
                 else if (args.Count == 3)
@@ -120,7 +122,7 @@ namespace BOOM.net
             WriteDb();
         }
 
-        private static void PrintValueForKey(string bucket, string key)
+        private static void PrintValForKeyCopyToClipboard(string bucket, string key)
         {
             if (!_db.Metadata.Buckets.Contains(bucket))
             {
@@ -134,7 +136,10 @@ namespace BOOM.net
                 return;
             }
 
-            Console.WriteLine(_db.Data[bucket].Values[key]);
+            var val = _db.Data[bucket].Values[key];
+
+            Clipboard.SetText(val);
+            Console.WriteLine("{0}\ncopied to clipboard!", val);
         }
 
         private static void CreateOrListBucket(string bucket)
