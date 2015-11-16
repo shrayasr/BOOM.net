@@ -1,4 +1,4 @@
-# BOOM.net
+# itko
 
 This is a clone of @holman's [BOOM](https://github.com/holman/BOOM) in .NET written in C#
 
@@ -6,32 +6,32 @@ Commands:
 
 Shows available lists with the number of keys in them
 
-    $ boom.net
+    $ itko
 
 Creates the list <list> if it doesn't exist or lists out the contents of it if
 it does.
 
-    $ boom.net <list>
+    $ itko <list>
 
 Creates the <key> under the list <list> with value <value>
 
-    $ boom.net <list> <key> <value>
+    $ itko <list> <key> <value>
 
 Prints out the value for the <key> under the <list>
 
-    $ boom.net <list> <key>
+    $ itko <list> <key>
 
 Delete list <list> and all its keys
 
-    $ boom.net delete <list>
+    $ itko delete <list>
 
 Delete key <key> in <list>
 
-    $ boom.net delete <list> <key>
+    $ itko delete <list> <key>
 
 List everything
 
-    $ boom.net all
+    $ itko all
 
 ---
 
