@@ -33,7 +33,20 @@ namespace BOOM.net
                 printBucketsAndEntries();
 
             else if (cmd == "delete")
-                Console.WriteLine("delete buckets");
+            {
+                if (args.Count == 2)
+                {
+                    var bucket = args[1];
+                    DeleteBucket(bucket);
+                }
+
+                else if (args.Count == 3)
+                {
+                    var bucket = args[1];
+                    var key = args[2];
+                    DeleteKeyInBucket(bucket, key);
+                }
+            }
 
             else
             {
@@ -55,6 +68,40 @@ namespace BOOM.net
                     StoreValueInKey(bucket, key, val);
                 }
             }
+        }
+
+        private static void DeleteKeyInBucket(string bucket, string key)
+        {
+            if (!_db.Metadata.Buckets.Contains(bucket))
+            {
+                Console.WriteLine("Bucket doesn't exist");
+                return;
+            }
+
+            if (!_db.Data[bucket].Keys.Contains(key))
+            {
+                Console.WriteLine("Key doesn't exist");
+                return;
+            }
+
+            _db.Data[bucket].Values.Remove(key);
+            _db.Data[bucket].Keys.Remove(key);
+
+            WriteDb();
+        }
+
+        private static void DeleteBucket(string bucket)
+        {
+            if (!_db.Metadata.Buckets.Contains(bucket))
+            {
+                Console.WriteLine("Bucket doesn't exist");
+                return;
+            }
+
+            _db.Data.Remove(bucket);
+            _db.Metadata.Buckets.Remove(bucket);
+
+            WriteDb(); 
         }
 
         private static void StoreValueInKey(string bucket, string key, string val)
