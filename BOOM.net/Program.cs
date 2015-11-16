@@ -74,13 +74,13 @@ namespace BOOM.net
         {
             if (!_db.Metadata.Buckets.Contains(bucket))
             {
-                Console.WriteLine("Bucket doesn't exist");
+                Console.WriteLine("Bucket `{0}` doesn't exist", bucket);
                 return;
             }
 
             if (!_db.Data[bucket].Keys.Contains(key))
             {
-                Console.WriteLine("Key doesn't exist");
+                Console.WriteLine("Key `{0}` doesn't exist under bucket `{1}`", key, bucket);
                 return;
             }
 
@@ -94,7 +94,7 @@ namespace BOOM.net
         {
             if (!_db.Metadata.Buckets.Contains(bucket))
             {
-                Console.WriteLine("Bucket doesn't exist");
+                Console.WriteLine("Bucket `{0}` doesn't exist", bucket);
                 return;
             }
 
@@ -108,7 +108,7 @@ namespace BOOM.net
         {
             if (!_db.Metadata.Buckets.Contains(bucket))
             {
-                Console.WriteLine("Bucket doesn't exist");
+                Console.WriteLine("Bucket `{0}` doesn't exist", bucket);
                 return;
             }
 
@@ -124,13 +124,13 @@ namespace BOOM.net
         {
             if (!_db.Metadata.Buckets.Contains(bucket))
             {
-                Console.WriteLine("Bucket doesn't exist");
+                Console.WriteLine("Bucket `{0}` doesn't exist", bucket);
                 return;
             }
 
             if (!_db.Data[bucket].Keys.Contains(key))
             {
-                Console.WriteLine("Key doesn't exist");
+                Console.WriteLine("Key `{0}` doesn't exist under bucket `{1}`", key, bucket);
                 return;
             }
 
