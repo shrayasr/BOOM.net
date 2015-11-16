@@ -62,9 +62,21 @@ namespace BOOM.net
             throw new NotImplementedException();
         }
 
-        private static void PrintValueForKey(string list, string key)
+        private static void PrintValueForKey(string bucket, string key)
         {
-            throw new NotImplementedException();
+            if (!_db.Metadata.Buckets.Contains(bucket))
+            {
+                Console.WriteLine("Bucket doesn't exist");
+                return;
+            }
+
+            if (!_db.Data[bucket].Keys.Contains(key))
+            {
+                Console.WriteLine("Key doesn't exist");
+                return;
+            }
+
+            Console.WriteLine(_db.Data[bucket].Values[key]);
         }
 
         private static void CreateOrListBucket(string bucket)
