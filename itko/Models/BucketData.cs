@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BOOM.net.Models
+namespace itko.Models
 {
     class BucketData
     {
