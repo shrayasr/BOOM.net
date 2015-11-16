@@ -30,10 +30,27 @@ namespace BOOM.net
             var cmd = args[0];
 
             if (cmd == "all")
-                Console.WriteLine("All buckets and their entries");
+                printBucketsAndEntries();
 
             else if (cmd == "delete")
                 Console.WriteLine("delete buckets");
+        }
+
+        private static void printBucketsAndEntries()
+        {
+            if (_db.Metadata.Buckets.Count == 0)
+                Console.WriteLine("No buckets");
+
+            else
+            {
+                _db.Metadata.Buckets.ForEach(bucket =>
+                {
+                    Console.WriteLine(bucket);
+                    _db.Data[bucket].Keys.ForEach(key =>
+                        Console.WriteLine("  {0}\t{1}", key, _db.Data[bucket].Values[key])
+                    );
+                });
+            }
         }
 
         private static void PrintBucketsAndCounts()
