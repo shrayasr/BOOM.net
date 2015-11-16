@@ -34,6 +34,60 @@ namespace BOOM.net
 
             else if (cmd == "delete")
                 Console.WriteLine("delete buckets");
+
+            else
+            {
+                var bucket = cmd;
+
+                if (args.Count == 1)
+                    CreateOrListBucket(bucket);
+
+                else if (args.Count == 2)
+                {
+                    var key = args[1];
+                    PrintValueForKey(bucket, key);
+                }
+
+                else if (args.Count == 3)
+                {
+                    var key = args[1];
+                    var val = args[2];
+                    StoreValueInKey(bucket, key, val);
+                }
+            }
+        }
+
+        private static void StoreValueInKey(string list, string key, string val)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void PrintValueForKey(string list, string key)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void CreateOrListBucket(string bucket)
+        {
+            if (_db.Metadata.Buckets.Contains(bucket))
+            {
+                Console.WriteLine(bucket);
+                _db.Data[bucket].Keys.ForEach(key => 
+                    Console.WriteLine("  {0}\t{1}", key, _db.Data[bucket].Values[key])
+                );
+            }
+
+            else
+            {
+                _db.Metadata.Buckets.Add(bucket);
+                _db.Data.Add(bucket, new BucketData
+                {
+                    Keys = new List<string>(),
+                    Values = new Dictionary<string, string>()
+                });
+
+                WriteDb();
+            }
         }
 
         private static void printBucketsAndEntries()
@@ -90,6 +144,11 @@ namespace BOOM.net
             }
 
             _db = JSON.Deserialize<Root>(File.ReadAllText(Settings.DB_LOCATION));
+        }
+
+        private static void WriteDb()
+        {
+            File.WriteAllText(Settings.DB_LOCATION, JSON.Serialize(_db));
         }
     }
 }
