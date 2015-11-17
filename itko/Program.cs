@@ -21,7 +21,7 @@ namespace itko
 
         private static void ParseAndGo(IEnumerable<string> argsToProcess)
         {
-            var args = argsToProcess.Select(arg => arg.ToLower()).ToList();
+            var args = argsToProcess.ToList();
 
             if (args.Count == 0)
             {
@@ -29,7 +29,7 @@ namespace itko
                 return;
             }
 
-            var cmd = args[0];
+            var cmd = args[0].ToLower();
 
             if (cmd == "all")
                 printBucketsAndEntries();
@@ -38,14 +38,14 @@ namespace itko
             {
                 if (args.Count == 2)
                 {
-                    var bucket = args[1];
+                    var bucket = args[1].ToLower();
                     DeleteBucket(bucket);
                 }
 
                 else if (args.Count == 3)
                 {
-                    var bucket = args[1];
-                    var key = args[2];
+                    var bucket = args[1].ToLower();
+                    var key = args[2].ToLower();
                     DeleteKeyInBucket(bucket, key);
                 }
             }
@@ -59,13 +59,13 @@ namespace itko
 
                 else if (args.Count == 2)
                 {
-                    var key = args[1];
+                    var key = args[1].ToLower();
                     PrintValForKeyCopyToClipboard(bucket, key);
                 }
 
                 else if (args.Count == 3)
                 {
-                    var key = args[1];
+                    var key = args[1].ToLower();
                     var val = args[2];
                     StoreValueInKey(bucket, key, val);
                 }
