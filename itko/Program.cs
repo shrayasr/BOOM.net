@@ -57,6 +57,11 @@ namespace itko
                 PrintValIfInGlobalKVCopytoClipboard(key);
             }
 
+            else if (cmd == "help")
+            {
+                PrintHelp();
+            }
+
             else
             {
                 var bucket = cmd;
@@ -77,6 +82,27 @@ namespace itko
                     StoreValueInKey(bucket, key, val);
                 }
             }
+        }
+
+        private static void PrintHelp()
+        {
+            Console.WriteLine(@"
+itko 
+    - Shows available buckets with the number of keys in them
+itko <bucket> 
+    - Creates <bucket> if it doesn't exist or lists out the contents of it if 
+      it does.
+itko <bucket> <key> <value>
+    - Creates the <key> under <bucket> with <value>
+itko <bucket> <key>
+    - Prints out the value for the <key> under the <bucket>
+itko delete <bucket>
+    - Delete <bucket> and all its keys
+itko delete <bucket> <key>
+    - Delete <key> in <bucket>
+itko all
+    - Prints everything
+");
         }
 
         private static void PrintValIfInGlobalKVCopytoClipboard(string key)
