@@ -11,6 +11,7 @@ namespace itko
     class Program
     {
         static Root _db;
+        static IDictionary<string, string> _globalKV;
 
         [STAThread]
         static void Main(string[] args)
@@ -50,6 +51,12 @@ namespace itko
                 }
             }
 
+            else if (cmd[0] == '.')
+            {
+                var key = cmd.Substring(1);
+                PrintValIfInGlobalKVCopytoClipboard(key);
+            }
+
             else
             {
                 var bucket = cmd;
@@ -69,6 +76,22 @@ namespace itko
                     var val = args[2];
                     StoreValueInKey(bucket, key, val);
                 }
+            }
+        }
+
+        private static void PrintValIfInGlobalKVCopytoClipboard(string key)
+        {
+            if (_globalKV.ContainsKey(key))
+            {
+                var val = _globalKV[key];
+
+                Clipboard.SetText(val);
+                Console.WriteLine("{0}\ncopied to clipboard!", val);
+            }
+
+            else
+            {
+                Console.WriteLine("Key `{0}` doesn't exist in any bucket", key);
             }
         }
 
@@ -219,6 +242,15 @@ namespace itko
             }
 
             _db = JSON.Deserialize<Root>(File.ReadAllText(Settings.DB_LOCATION));
+
+            _globalKV = new Dictionary<string, string>();
+            _db.Metadata.Buckets.ForEach(bucket =>
+            {
+                _db.Data[bucket].Keys.ForEach(key =>
+                {
+                    _globalKV[key] = _db.Data[bucket].Values[key];
+                });
+            });
         }
 
         private static void WriteDb()
