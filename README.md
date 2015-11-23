@@ -4,7 +4,11 @@
 This is a clone of @holman's [BOOM](https://github.com/holman/BOOM) in .NET
 written in C#
 
-Commands:
+## Demo
+
+![itko demo gif](http://i.imgur.com/PvU095n.gifv)
+
+## Commands
 
 Show available buckets with the number of keys in them
 
