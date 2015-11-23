@@ -6,7 +6,7 @@ written in C#
 
 ## Demo
 
-![itko demo GIF](http://i.imgur.com/PvU095n.gifv)
+![itko demo GIF](http://i.imgur.com/PvU095n.gif)
 
 ## Commands
 
