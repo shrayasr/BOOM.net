@@ -5,32 +5,31 @@ This is a clone of @holman's [BOOM](https://github.com/holman/BOOM) in .NET writ
 
 Commands:
 
-Shows available lists with the number of keys in them
+Show available buckets with the number of keys in them
 
-    $ itko
+    $ itko 
 
-Creates the list <list> if it doesn't exist or lists out the contents of it if
-it does.
+Creates <bucket> if it doesn't exist or lists out the contents of it if it does.
 
-    $ itko <list>
+    $ itko <bucket> 
 
-Creates the <key> under the list <list> with value <value>
+Creates the <key> under <bucket> with <value>
 
-    $ itko <list> <key> <value>
+    $ itko <bucket> <key> <value>
 
-Prints out the value for the <key> under the <list>
+Prints out the value for the <key> under the <bucket>
 
-    $ itko <list> <key>
+    $ itko <bucket> <key>
 
-Delete list <list> and all its keys
+Delete <bucket> and all its keys
 
-    $ itko delete <list>
+    $ itko delete <bucket>
 
-Delete key <key> in <list>
+Delete <key> in <bucket>
 
-    $ itko delete <list> <key>
+    $ itko delete <bucket> <key>
 
-List everything
+Prints everything
 
     $ itko all
 
