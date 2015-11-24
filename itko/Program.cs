@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Windows.Forms;
+//using System.Windows.Forms;
 
 namespace itko
 {
@@ -13,7 +13,6 @@ namespace itko
         static Root _db;
         static IDictionary<string, string> _globalKV;
 
-        [STAThread]
         static void Main(string[] args)
         {
             LoadDb();
@@ -111,8 +110,8 @@ itko all
             {
                 var val = _globalKV[key];
 
-                Clipboard.SetText(val);
-                Console.WriteLine("{0}\ncopied to clipboard!", val);
+                //Clipboard.SetText(val);
+                //Console.WriteLine("{0}\ncopied to clipboard!", val);
             }
 
             else
@@ -187,8 +186,8 @@ itko all
 
             var val = _db.Data[bucket].Values[key];
 
-            Clipboard.SetText(val);
-            Console.WriteLine("{0}\ncopied to clipboard!", val);
+            //Clipboard.SetText(val);
+            //Console.WriteLine("{0}\ncopied to clipboard!", val);
         }
 
         private static void CreateOrListBucket(string bucket)
