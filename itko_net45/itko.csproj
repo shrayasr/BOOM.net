@@ -52,15 +52,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\BucketData.cs" />
-    <Compile Include="Models\MetadataData.cs" />
-    <Compile Include="Models\Root.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings.cs" />
+    <Compile Include="..\itko\Models\BucketData.cs" />
+    <Compile Include="..\itko\Models\MetadataData.cs" />
+    <Compile Include="..\itko\Models\Root.cs" />
+    <Compile Include="..\itko\Program.cs" />
+    <Compile Include="..\itko\Properties\AssemblyInfo.cs" />
+    <Compile Include="..\itko\Settings.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="..\itko\App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
