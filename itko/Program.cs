@@ -130,7 +130,8 @@ itko all
 
             if (!_db.Data[bucket].Keys.Contains(key))
             {
-                Console.WriteLine("Key `{0}` doesn't exist under bucket `{1}`", key, bucket);
+                Console.WriteLine("Key `{0}` doesn't exist under bucket `{1}`", 
+                    key, bucket);
                 return;
             }
 
@@ -154,7 +155,8 @@ itko all
             WriteDb(); 
         }
 
-        private static void StoreValueInKey(string bucket, string key, string val)
+        private static void StoreValueInKey(string bucket, string key, 
+            string val)
         {
             if (!_db.Metadata.Buckets.Contains(bucket))
             {
@@ -170,7 +172,8 @@ itko all
             WriteDb();
         }
 
-        private static void PrintValForKeyCopyToClipboard(string bucket, string key)
+        private static void PrintValForKeyCopyToClipboard(string bucket, 
+            string key)
         {
             if (!_db.Metadata.Buckets.Contains(bucket))
             {
@@ -180,7 +183,8 @@ itko all
 
             if (!_db.Data[bucket].Keys.Contains(key))
             {
-                Console.WriteLine("Key `{0}` doesn't exist under bucket `{1}`", key, bucket);
+                Console.WriteLine("Key `{0}` doesn't exist under bucket `{1}`", 
+                    key, bucket);
                 return;
             }
 
@@ -196,7 +200,8 @@ itko all
             {
                 Console.WriteLine(bucket);
                 _db.Data[bucket].Keys.ForEach(key => 
-                    Console.WriteLine("  {0}\t{1}", key, _db.Data[bucket].Values[key])
+                    Console.WriteLine("  {0}\t{1}", key, 
+                      _db.Data[bucket].Values[key])
                 );
             }
 
@@ -224,7 +229,8 @@ itko all
                 {
                     Console.WriteLine(bucket);
                     _db.Data[bucket].Keys.ForEach(key =>
-                        Console.WriteLine("  {0}\t{1}", key, _db.Data[bucket].Values[key])
+                        Console.WriteLine("  {0}\t{1}", key, 
+                          _db.Data[bucket].Values[key])
                     );
                 });
             }
@@ -263,7 +269,8 @@ itko all
             if (!File.Exists(Settings.DB_LOCATION))
             {
                 var starterTemplate = GetStarterTemplate();
-                File.WriteAllText(Settings.DB_LOCATION, JSON.Serialize(starterTemplate));
+                File.WriteAllText(Settings.DB_LOCATION, 
+                    JSON.Serialize(starterTemplate));
             }
 
             _db = JSON.Deserialize<Root>(File.ReadAllText(Settings.DB_LOCATION));
