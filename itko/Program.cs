@@ -109,6 +109,7 @@ itko all
             if (_globalKV.ContainsKey(key))
             {
                 var val = _globalKV[key];
+                Console.WriteLine(val);
 
                 //Clipboard.SetText(val);
                 //Console.WriteLine("{0}\ncopied to clipboard!", val);
@@ -189,6 +190,8 @@ itko all
             }
 
             var val = _db.Data[bucket].Values[key];
+
+            Console.WriteLine(val);
 
             //Clipboard.SetText(val);
             //Console.WriteLine("{0}\ncopied to clipboard!", val);
