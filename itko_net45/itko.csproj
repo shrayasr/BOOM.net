@@ -58,6 +58,7 @@
     <Compile Include="..\itko\Program.cs" />
     <Compile Include="..\itko\Properties\AssemblyInfo.cs" />
     <Compile Include="..\itko\Settings.cs" />
+    <Compile Include="..\itko\Util.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\itko\App.config" />
