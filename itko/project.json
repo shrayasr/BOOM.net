@@ -1,14 +1,23 @@
 {
   "version": "0.0.1",
-  "authors": ["Shrayas R"],
+  "authors": [ "Shrayas R" ],
   "description": "A BOOM replacement in .NET",
+
   "dependencies": {
     "Jil": "2.13.0-beta1"
   },
+
   "frameworks": {
+    "net45": {
+      "frameworkAssemblies": {
+        "System.Data": "4.0.0.0"
+      }
+    },
     "dnxcore50": {
       "dependencies": {
-        "System.IO.FileSystem": "4.0.0",
+        "Microsoft.CSharp": "4.0.0-beta-23019",
+        "System.Collections": "4.0.10-beta-23019",
+        "System.IO.FileSystem": "4.0.0-beta-23019",
         "System.Runtime.InteropServices.RuntimeInformation": "4.0.0-beta-23516"
       }
     }
